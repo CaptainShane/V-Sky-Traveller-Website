@@ -1,0 +1,62 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body{
+    background-image: url(contactsbg.jpg);
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+h1{
+    font-size: 4rem;
+    text-align: center;
+    -webkit-text-stroke: 1px black; 
+}
+
+h3{
+    text-align: center;
+    font-size: 2rem;
+    position: relative;
+}
+
+h3::before{
+    content: "";
+    display: block;
+    width: 46rem;
+    height: 2px;
+    background-color: #e27171;
+    position: absolute;
+    left: 0;
+    top: 50%;
+}
+
+h3::after{
+    content: "";
+    display: block;
+    width: 46rem;
+    height: 2px;
+    background-color: #fb7171;
+    position: absolute;
+    right: 0;
+    top: 50%;
+} 
+
+p{
+    text-align: center;
+    justify-content: justify;
+}
+
+.contactsBackground{
+    text-align: center;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    border-radius: 10px;
+}
+
+h4{
+    color: white;
+}

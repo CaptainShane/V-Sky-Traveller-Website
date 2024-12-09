@@ -3,40 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact Page</title>
     <link rel="stylesheet" href="contacts.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
+    <section class="contactsBackground">
+        <div class="contactsWrapper">
+            <!-- Left Section -->
+            <div class="contactsText" style="padding-left: 0;">
+                <h1><strong>Contacts</strong></h1>
+                <h3 style="color: bisque;">Reach out thru here!</h3>
+                <p style="font-size: 0.8rem;">Send me your questions, comments, or suggestions! <br>
+                    If you'd like to work with me or you have a question or comment,<br> you can contact me using the form below. <br><br>
+                    Sometimes I'm busy traveling, but I try to respond to any messages!
+                </p><br><br><br><br>
+                <button type="submit" class="submitBtn">Submit</button>
+            </div>
+            <!-- Right Section -->
+            <form action="" class="contactForm">
+                <div class="formGroup">
+                    <label for="fullName" style="text-align: center;">Full Name</label>
+                    <input type="text" id="fullName" placeholder="Name" style="text-align: center;">
+                </div>
 
-    <div class="contacts">
-       <br> <h1 style="color: white; text-decoration: solid black 10px;">Contacts</h1><br>
-        <h3 style="color: rgb(239, 56, 87)">Get In Touch</h3><br>
-        <p>Send me your questions, comments, or suggestions! <br>
-            If you'd like to work with me or you have a question or comment, you can contact me using the form below. <br><br>
-            
-            Sometimes I'm busy traveling, but I try to respond to any messages!</p><br>
+                <div class="formGroup">
+                    <label for="email" style="text-align: center;">Email</label>
+                    <input type="email" id="email" name="email" placeholder="juan.delacruz@example.com" style="text-align: center;"><br>
+                </div>
+
+                <div class="formGroup">
+                    <label for="message" style="text-align: center;">Your Message</label>
+                    <textarea id="message" name="message" placeholder="Write something" rows="6" style="text-align: center;"></textarea>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <div class="footer">
+        <h2 style="color: black; font-size: 3rem;">Newsletter</h2>
+        <p style="color: black; font-size: smaller;">Subscribe to my newsletter for the latest blog posts, tips, & travel guides. Let's stay updated!</p><br><br>
+
+        <div class="newsletter">
+            <input type="text" id="newsletterInput" placeholder="Write feedback or thoughts" style="width: 50rem; text-align: center;">
+            <button id="subscribeButton">Subscribe</button>
+        </div>
     </div>
 
-    <section class="contactsBackground" style="background-color: rgba(0, 0, 0, 0.47); padding: 0.5rem;">
-        <div class="name"><br>
-            <h4>Name</h4>
-            <input type="text" size="50rem">
-        </div><br>
-        <div class="email">
-            <h4>Email</h4>
-            <input type="text" size="50rem">
-        </div><br>
-        <div class="subject">
-            <h4>Subject</h4>
-            <input type="text" size="50rem">
-        </div><br><br>
-        <div class="subject">
-            <h4>Your Message</h4>
-            <textarea id="w3review" name="w3review" rows="6" cols="50" style="justify-content: center; text-align: center;">Write something</textarea>
-        </div> <br><br>
+    <!-- Social Media Section -->
+    <div class="icons" style="background-color: black; text-align: center; padding-top: 1.5rem; padding-bottom: 3rem;">
+        <a href=""><i class='bx bxl-instagram'></i></a>
+        <a href="#"><i class='bx bxl-facebook-square'></i></a>
+        <a href="#"><i class='bx bxl-youtube'></i></a>
+        <a href="#"><i class='bx bxl-gmail'></i></a>
+    </div>
 
-        <a href="#" class="submitBtn" style="background-color: rgb(68, 90, 255); color: white; text-decoration: none; padding: 8px; border-radius: 5px;">Submit</a><br><br>
+    <footer style="background-color: black; color: white; font-size: small; text-align: center;">
+        @VSkyTraveler2024
+    </footer>
 
-    </section>
+    <script>
+        const form = document.querySelector(".contactForm");
+        const submitButton = document.querySelector(".submitBtn");
+
+        // Define validation patterns
+        const namePattern = /^[A-Z][a-z\s]{1,50}$/; // Name starts with uppercase, followed by letters or spaces
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email validation
+        const messagePattern = /^.{1,1000}$/; // Message length: 1 to 1000 characters
+
+        // Add event listener for submit button
+        submitButton.addEventListener("click", (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get form values
+            const fullName = document.getElementById("fullName").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            // Validate input
+            const isNameValid = namePattern.test(fullName);
+            const isEmailValid = emailPattern.test(email);
+            const isMessageValid = messagePattern.test(message);
+
+            // Apply border color based on validation
+            document.getElementById("fullName").style.borderColor = isNameValid ? 'green' : 'red';
+            document.getElementById("email").style.borderColor = isEmailValid ? 'green' : 'red';
+            document.getElementById("message").style.borderColor = isMessageValid ? 'green' : 'red';
+
+            // Logging validation results
+            console.log("Name Valid:", isNameValid, fullName);
+            console.log("Email Valid:", isEmailValid, email);
+            console.log("Message Valid:", isMessageValid, message);
+
+            // Show feedback or handle submission
+            if (isNameValid && isEmailValid && isMessageValid) {
+                console.log("Form is valid. Submitting...");
+                alert("Form submitted successfully!");
+            } else {
+                alert("Please fill out the form correctly.");
+            }
+        });
+
+        // Newsletter functionality
+        const subscribeButton = document.getElementById("subscribeButton");
+        const newsletterInput = document.getElementById("newsletterInput");
+
+        subscribeButton.addEventListener("click", (event) => {
+            event.preventDefault(); // Prevent default button behavior
+
+            const feedback = newsletterInput.value.trim(); // Get and trim input value
+
+            // Validate the input length (at least 1 character)
+            if (feedback.length > 0) {
+                console.log("Newsletter Feedback Submitted:", feedback);
+                alert("Thank you for subscribing!");
+                newsletterInput.style.borderColor = "green"; // Add green border for valid input
+            } else {
+                console.log("Invalid Newsletter Feedback: The input is empty.");
+                alert("Please provide your feedback before subscribing.");
+                newsletterInput.style.borderColor = "red"; // Add red border for invalid input
+            }
+        });
+    </script>
+
 </body>
 </html>
